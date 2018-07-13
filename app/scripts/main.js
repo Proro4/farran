@@ -1,0 +1,20 @@
+$(document).ready(function () {
+    $('.slider-info').owlCarousel({
+        items:1
+    });
+    $('.company-slider').owlCarousel({
+        items:3,
+        dots:false,
+        nav:true,
+        responsive:{
+            770:{
+                items:6
+            }
+        }
+    });
+    $('.portfolio-slider').owlCarousel({
+        items:1,
+        dots:false,
+        nav:true
+    })
+});
