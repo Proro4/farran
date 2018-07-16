@@ -64,15 +64,47 @@ h2{
   color: $blue;
   text-transform: uppercase;
 }
+h3{
+  margin-top: 0;
+  font-size: 36px;
+  color: #21190e;
+  font-family: 'Gentona-Bold';
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  span{
+    font-family: 'Gentona-Bold';
+    color: $red;
+    display: block;
+  }
+}
+
 .header{
+  position: relative;
   display: flex;
   padding-bottom: 125px;
   &__img{
     width: 63%;
     right: 0;
     top: 0;
+    position: relative;
+    align-self: flex-start;
     img{
       float: right;
+    }
+    &__text{
+      h4{
+        text-transform: uppercase;
+        font-size: 36px;
+      }
+      p{
+        text-transform: uppercase;
+        font-size: 21px;
+      }
+      position: absolute;
+      z-index: 1;
+      color: white;
+      left:125px;
+      bottom: 30px;
     }
   }
   &__left{
@@ -150,6 +182,40 @@ h2{
               text-decoration: none;
             }
           }
+          &.menu-down{
+            padding-bottom: 15px;
+            padding-right: 15px;
+            position: relative;
+            background: url("../images/arrow-but.png")no-repeat right top 10px;
+            ul{
+              display: none;
+              position: absolute;
+              z-index: 10;
+              left: -50%;
+              top:100%;
+              flex-direction: column;
+              background: white;
+              padding: 15px;
+              width: 165px;
+              box-shadow: 0 0 10px 10px rgba(0,0,0,0.05);
+              li{
+                text-align: center;
+                padding: 7px 0;
+                border-bottom: 1px solid #d2e3f0;
+                &:last-child{
+                  border-bottom: 0;
+                }
+                a{
+                  font-size: 16px;
+                }
+              }
+            }
+            &:hover{
+              ul{
+                display: flex;
+              }
+            }
+          }
         }
       }
     }
@@ -159,13 +225,44 @@ h2{
     &__info{
       display: flex;
       flex-direction: column;
-    padding-left: 0;
+       padding-left: 0;
       li{
         padding-left: 21px;
         font-size: 21px;
         display: inline-block;
         color: $blue;
         background: url("../images/ok-ic.png")no-repeat left center;
+      }
+    }
+  }
+  &__form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea{
+      padding-left: 15px;
+      width: 70%;
+      resize: none;
+      box-sizing: border-box;
+      height: 41px;
+      margin-bottom: 14px;
+    }
+    .butt{
+      border:none;
+      display: inline-block;
+      width: 165px;
+    }
+  }
+  &__map{
+    margin-top: 25px;
+    &__img{
+      overflow: hidden;
+      img{
+        width: 100%;
+        object-fit: cover;
       }
     }
   }
@@ -238,6 +335,25 @@ h2{
   background: url("../images/info-2-bg.png")no-repeat center;
   &.bg-1{
     background: url("../images/info-2-bg-1.png")no-repeat center;
+  }
+  &.bg-2{
+    background: url("../images/info-2-bg-2.png")no-repeat center;
+  }
+  &__ul-circle{
+    li{
+      padding-left: 22px;
+      position: relative;
+      &:before{
+        content: '';
+        position: absolute;
+        height: 9px;
+        width: 9px;
+        border-radius: 50%;
+        background: $blue;
+        left: 0;
+        top: 10px;
+      }
+    }
   }
   &__text{
     width:82%;
@@ -581,6 +697,17 @@ h2{
   }
 }
 @media screen and (max-width: 1680px) {
+  .header__img__text{
+    bottom: 10px;
+  }
+  .header__img__text h4{
+    font-size: 26px;
+    margin-bottom: 5px;
+  }
+  .header__img__text p{
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
   .header__left{
     padding-top: 25px;
   }
@@ -640,6 +767,17 @@ h2{
   }
 }
 @media screen and (max-width: 1220px) {
+  .header__img__text{
+    left: 55px;
+    bottom: 0;
+  }
+  .header__img__text h4{
+    font-size: 22px;
+    margin-bottom: 0;
+  }
+  .header__img__text p{
+    font-size: 14px;
+  }
   .header__left{
     width: 50%;
   }
@@ -700,6 +838,18 @@ h2{
   }
 }
 @media screen and (max-width: 992px) {
+  .header__img__text{
+    left: 35px;
+    bottom: 10px;
+  }
+  .header__img__text h4{
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+  .header__img__text p{
+    font-size: 12px;
+    margin-bottom: 0;
+  }
   .header__left{
     padding: 15px;
   }
@@ -746,9 +896,19 @@ h2{
   .footer__text ul li{
     font-size: 14px;
   }
+  .info-text p{
+    max-width: 700px;
+  }
 }
 
+.mob-d{
+  display: none;
+}
 @media screen and (max-width: 770px) {
+  .mob-d{
+    display: block;
+  }
+
   .header{
     width: 100%;
   }
@@ -766,6 +926,7 @@ h2{
     display: none;
   }
   .info-2{
+    padding-top: 50px;
     background: transparent !important;
   }
   .info-2__text{
@@ -790,5 +951,110 @@ h2{
   }
   h2{
     font-size: 36px;
+  }
+  .footer__text a{
+    margin: 25px 0 0 15px;
+  }
+  .header__left__menu ul li.menu-down ul li a{
+    font-size: 14px;
+  }
+  .info-text{
+    padding-bottom: 50px;
+  }
+  .info-text p{
+    font-size: 18px;
+    max-width: 520px;
+  }
+}
+@media screen and (max-width: 550px){
+  .header__left__menu ul li.menu-down ul li a{
+    font-size: 12px;
+  }
+  .company-slider, .portfolio-slider{
+    margin-bottom: 40px;
+  }
+  .info-2{
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .info-5{
+    margin-bottom: 0;
+  }
+  .header__left__menu ul li a{
+    font-size: 12px;
+  }
+  h1{
+    font-size: 36px;
+  }
+  .slider-info__item{
+    padding-left: 15px;
+  }
+  .header{
+    padding-bottom:35px;
+  }
+  .info-1__left{
+    padding: 35px 15px;
+  }
+  .info-2{
+    padding-top: 0px;
+  }
+  .info-4{
+    margin-bottom: 40px;
+  }
+  .info-5__block{
+    margin-bottom: 15px;
+  }
+  .info-5 h2{
+    margin-bottom: 40px;
+  }
+  .info-5__block__img{
+    margin-bottom: 10px;
+    height:98px;
+    width: 98px;
+    img{
+      width: 55px;
+      height: 55px;
+      object-fit: contain;
+    }
+  }
+  .footer__copy{
+    padding:25px 15px 0;
+  }
+  .header__left__tel{
+    font-size: 15px;
+    padding-left: 35px;
+    &:before{
+      top: -3px;
+    }
+  }
+  .header__left{
+    padding-top: 5px;
+  }
+  .header__left__top{
+    margin-bottom: 10px;
+  }
+  .info-text p{
+    font-size: 16px;
+    max-width: 300px;
+  }
+  .info-2__text__title{
+    font-size: 25px;
+  }
+
+  .header__form{
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea{
+      width:100%;
+    }
+  }
+  .header__map{
+    &__img{
+      img{
+        width: 130%;
+        object-fit: cover;
+      }
+    }
   }
 }
