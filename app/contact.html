@@ -26,7 +26,7 @@
   </head>
   <body>
   <header>
-    <div class="header">
+    <div class="header contact">
       <div class="header__left">
         <div class="header__left__inner">
           <div class="header__left__top">
@@ -58,7 +58,7 @@
           </form>
           <div class="header__map mob-d">
             <div class="header__map__img">
-              <img src="images/map-mini.png" alt="">
+              <div id="map-1"></div>
             </div>
             <h4>adrees</h4>
             <p>
@@ -74,6 +74,9 @@
         </div>
       </div>
       <div class="header__img">
+        <div class="header__img__map">
+          <div id="map"></div>
+        </div>
         <div class="header__img__text">
           <h4>adrees</h4>
           <p>
@@ -86,7 +89,8 @@
             Tel: 0424327726
           </p>
         </div>
-        <img src="images/bg-5.png" alt="">
+
+        <!--<img src="images/bg-5.png" alt="">-->
       </div>
     </div>
   </header>
@@ -159,7 +163,73 @@
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
     <!-- endbuild -->
-    
+
+
+
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6AvtDOz1HkY1uEX6q4BtyFPeRKC5XN1o&amp;">
+  </script>
+
+  <script type="text/javascript">
+      // When the window has finished loading create our google map below
+      google.maps.event.addDomListener(window, 'load', init);
+
+      function init() {
+          // Basic options for a simple Google Map
+          // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+
+
+          var mapOptions = {
+              // How zoomed in you want the map to start at (always required)
+              zoom: 14,
+              // The latitude and longitude to center the map (always required)
+              center: new google.maps.LatLng(50.436256, 30.516409), //  ,
+              gestureHandling: 'cooperative',
+
+              // How you would like to style the map.
+              // This is where you would paste any style found on Snazzy Maps.
+              styles: [
+
+              ]
+          };
+
+          // Get the HTML DOM element that will contain your map
+          // We are using a div with id="map" seen below in the <body>
+          var mapElement = document.getElementById('map');
+          var mapElement1 = document.getElementById('map-1');
+          // Create the Google Map using our element and options defined above
+          var map = new google.maps.Map(mapElement, mapOptions);
+          var map = new google.maps.Map(mapElement1, mapOptions);
+
+          // Let's also add a marker while we're at it
+          var contentString = '<div id="content">'+
+              '<div id="siteNotice">'+
+              '</div>'+
+              '<div class="infowindow" id="bodyContent">'+
+                '<p>Farrcan-heit <br> Air-conditioning</p>'+
+              '</div>'+
+              '</div>';
+          var infowindow = new google.maps.InfoWindow({
+              content: contentString
+          });
+
+          var marker = new google.maps.Marker({
+              position:  {lat:50.436256, lng:30.516409},
+              map: map,
+              icon: 'images/marker.png'
+          });
+          marker.addListener('click', function() {
+              infowindow.open(map, marker);
+          });
+          infowindow.open(map, marker);
+      }
+
+  </script>
+
+
+
+
+
     <!-- build:js scripts/main.js -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->

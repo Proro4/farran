@@ -104,7 +104,7 @@ h3{
       z-index: 1;
       color: white;
       left:125px;
-      bottom: 30px;
+      bottom: 50px;
     }
   }
   &__left{
@@ -243,17 +243,25 @@ h3{
     input[type="email"],
     input[type="tel"],
     textarea{
+      background: transparent;
       padding-left: 15px;
       width: 70%;
       resize: none;
       box-sizing: border-box;
       height: 41px;
       margin-bottom: 14px;
+      border:1px solid #cccccc;
     }
     .butt{
+      margin-top: 15px;
       border:none;
       display: inline-block;
-      width: 165px;
+      width: 145px;
+      font-size: 21px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      border-radius: 25px;
+      padding: 11px 45px;
     }
   }
   &__map{
@@ -612,6 +620,29 @@ h3{
     text-align: center;
   }
 }
+.header__img__map{
+  position: relative;
+  height: 950px;
+  &:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: url("../images/bg-5.png")no-repeat left bottom;
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+#map{
+  height: 850px;
+  width: 100%;
+}
+#map-1{
+  width: 100%;
+  height: 400px;
+}
 .company-slider,
 .portfolio-slider{
   width:80%;
@@ -673,6 +704,13 @@ h3{
     transform: rotate(0deg);
   }
 }
+.infowindow p{
+  font-size: 21px;
+  text-align: center;
+}
+.contact .header__left__menu{
+  margin-bottom: 50px;
+}
 @media screen and (max-width: 1920px) {
   .header__img img{
     max-width: 100%;
@@ -697,9 +735,6 @@ h3{
   }
 }
 @media screen and (max-width: 1680px) {
-  .header__img__text{
-    bottom: 10px;
-  }
   .header__img__text h4{
     font-size: 26px;
     margin-bottom: 5px;
@@ -767,17 +802,6 @@ h3{
   }
 }
 @media screen and (max-width: 1220px) {
-  .header__img__text{
-    left: 55px;
-    bottom: 0;
-  }
-  .header__img__text h4{
-    font-size: 22px;
-    margin-bottom: 0;
-  }
-  .header__img__text p{
-    font-size: 14px;
-  }
   .header__left{
     width: 50%;
   }
@@ -838,18 +862,6 @@ h3{
   }
 }
 @media screen and (max-width: 992px) {
-  .header__img__text{
-    left: 35px;
-    bottom: 10px;
-  }
-  .header__img__text h4{
-    font-size: 18px;
-    margin-bottom: 0;
-  }
-  .header__img__text p{
-    font-size: 12px;
-    margin-bottom: 0;
-  }
   .header__left{
     padding: 15px;
   }
@@ -908,7 +920,9 @@ h3{
   .mob-d{
     display: block;
   }
-
+  .header__map{
+    width: 100%;
+  }
   .header{
     width: 100%;
   }
